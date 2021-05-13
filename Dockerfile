@@ -1,5 +1,4 @@
 FROM node
-WORKDIR /actions
 COPY . .
 RUN npm install
 EXPOSE 3000
