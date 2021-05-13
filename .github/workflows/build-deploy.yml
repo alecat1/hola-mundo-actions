@@ -17,9 +17,11 @@ jobs:
           node-version: '10.x'
       - name: Build
         run: npm i
-      - uses: actions/checkout@v1
-      - name: Login to DockerHub Registry
-        run: echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+      - name: Login to GitHub Docker Registry
+        run: docker login docker.pkg.github.com --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.GITHUB_DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.GITHUB_DOCKER_PASSWORD }}
       - name: Build
         run: docker build -t actions .
       - name: Tags
