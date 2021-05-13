@@ -1,5 +1,9 @@
-FROM ubuntu
-COPY . .
+
+# Stage 1
+FROM node:14.16.1
+RUN mkdir -p /app
+WORKDIR /app
+COPY package.json /app
 RUN npm install
-EXPOSE 3000
-ENTRYPOINT ["npm", "start"]
+COPY . /app
+RUN npm run build --prod
