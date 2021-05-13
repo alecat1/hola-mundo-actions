@@ -7,6 +7,8 @@ jobs:
   build-and-deploy:
     name: Mi primer job
     runs-on: ubuntu-latest
+    container: 
+      image: ubuntu
     steps:
       - name: Ejecutar deploy
         uses: actions/checkout@v1
@@ -16,7 +18,24 @@ jobs:
       - name: Build
         run: |
           npm i
-          npm run-script build
+          npm test
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
+      - name: Docker build
+        run: docker build -t actions .
+      - name: Tags
+        run: |
+          docker tag back ${{ secrets.DOCKER_HUB_USERNAME }}/actions:${{ github.sha }}
+          docker tag back ${{ secrets.DOCKER_HUB_USERNAME }}/actions:latest
+      - name: Push
+        run: |
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/actions:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/actions:latest
+      - name: Deploy to Azure
+        uses: azure/webapps-deploy@v1
+        with: 
+          app-name: actions
+          publish-profile: ${{ secrets.AZURE_TOKEN }}
       - name: Deploy to firebase
         uses: w9jds/firebase-action@master
         with:
