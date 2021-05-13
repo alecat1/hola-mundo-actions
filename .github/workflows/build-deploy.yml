@@ -1,4 +1,4 @@
-name: Mi primer workflow
+name: workflow
 on:
   push:
     branches:
