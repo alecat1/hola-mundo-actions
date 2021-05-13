@@ -1,4 +1,4 @@
-FROM node
+FROM ubuntu
 COPY . .
 RUN npm install
 EXPOSE 3000
