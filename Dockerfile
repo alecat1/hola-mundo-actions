@@ -1,16 +1,13 @@
 
-FROM node:12.16.1-alpine As builder
+# stage 1
 
-WORKDIR /usr/src/app
-
-COPY package.json package-lock.json ./
-
-RUN npm install
-
+FROM node:alpine AS my-app-build
+WORKDIR /app
 COPY . .
+RUN npm ci && npm run build
 
-RUN npm run build --prod
+# stage 2
 
-FROM nginx:1.15.8-alpine
-
-COPY --from=builder /usr/src/app/dist/SampleApp/ /usr/share/nginx/html
+FROM nginx:alpine
+COPY --from=my-app-build /app/dist/github-actions-project /usr/share/nginx/html
+EXPOSE 80
