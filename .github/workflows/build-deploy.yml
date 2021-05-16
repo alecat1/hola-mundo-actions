@@ -1,4 +1,4 @@
-name: workflow
+name: Angular+git
 on:
   push:
     branches:
