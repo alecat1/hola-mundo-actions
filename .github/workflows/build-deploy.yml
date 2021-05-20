@@ -1,4 +1,4 @@
-name: Angular+git+
+name: Angular+git
 on:
   push:
     branches:
