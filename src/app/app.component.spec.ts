@@ -13,13 +13,6 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
   });
-
-  it('should create the app', () => {
-    var fixture = TestBed.createComponent(AppComponent);
-    var app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
   it("El título debe ser 'Actions'", async() =>{
     var fixture = TestBed.createComponent(AppComponent);
     var app = fixture.debugElement.componentInstance;
