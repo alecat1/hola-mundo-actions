@@ -21,8 +21,6 @@ jobs:
           node-version: '10.x'
       - name: Install NPM Modules
         run: npm install
-      - name: Build Project
-        run: npm run build
       - name: Test
         run: npm test
 

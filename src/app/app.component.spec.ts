@@ -15,14 +15,14 @@ describe('AppComponent', () => {
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+    var fixture = TestBed.createComponent(AppComponent);
+    var app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it("El título debe ser 'Actions'", async() =>{
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
+    var fixture = TestBed.createComponent(AppComponent);
+    var app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual("Actions");
   });
 });
