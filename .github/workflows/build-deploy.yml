@@ -19,8 +19,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-      - name: Build
-        run: npm i
+      - name: Install NPM Modules
+        run: npm install
+      - name: Build Project
+        run: npm run build
       - name: Test
         run: npm test
       - name: Push to Docker Hub
