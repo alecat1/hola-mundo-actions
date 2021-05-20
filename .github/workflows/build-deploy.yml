@@ -21,7 +21,7 @@ jobs:
           node-version: '10.x'
       - name: Install NPM Modules
         run: npm install
-        run: npm test
+             npm test
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
