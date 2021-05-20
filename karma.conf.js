@@ -48,7 +48,6 @@ module.exports = function (config) {
           '--disable-gpu',
           '--no-sandbox',
           '--remote-debugging-port=9222',
-          '--js-flags="--max_old_space_size=4096"',
         ]
       }
     },

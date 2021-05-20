@@ -9,7 +9,7 @@ env:
   NODE_VERSION: '10.x'     
 jobs:
   build-and-deploy:
-    name: Mi primer job
+    name: Ejemplo
     runs-on: ubuntu-latest
     container: 
       image: ubuntu
