@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --prod",
-    "test":"karma start karma.conf.js" ,
+    "test":"ng test --karma-config karma.somestuff.conf.js" ,
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
